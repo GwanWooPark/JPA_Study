@@ -69,6 +69,8 @@ public class JpaMain {
             em.flush();
             System.out.println("=============================");*/
 
+            // 영속석 context에서 빼버린다. 준영속 상태로 전환
+            //em.detach(member);
 
             tx.commit();
         } catch (Exception e) {
