@@ -18,9 +18,9 @@ public class JpaMain {
         try {
             // Create
             // 비영속
-            //Member member = new Member();
-            //member.setId(1L);
-            //member.setName("HelloA");
+            /*Member member = new Member();
+            member.setId(1L);
+            member.setName("HelloJPA");*/
 
             // 영속 : 이때 db에 저장되는 것은 아니다
             //System.out.println("=== BEFORE ===");
