@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.time.LocalDateTime;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -16,6 +17,8 @@ public class JpaMain {
 
         try {
 
+            /*
+            상속관계 매핑 예제
             Movie movie = new Movie();
             movie.setDirector("aaa");
             movie.setActor("bbb");
@@ -29,6 +32,18 @@ public class JpaMain {
 
             Movie findMovie = em.find(Movie.class, movie.getId());
             System.out.println("findMovie =" + findMovie.getActor());
+            */
+
+            // MappedSuperclass 예제
+            Member member = new Member();
+            member.setUsername("user1");
+            member.setCreatedBy("kim");
+            member.setCreatedDate(LocalDateTime.now());
+
+            em.persist(member);
+
+            em.flush();
+            em.clear();
 
             tx.commit();
         } catch (Exception e) {

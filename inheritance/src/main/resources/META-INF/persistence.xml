@@ -5,6 +5,8 @@
         <class>hello.jpa.Book</class>
         <class>hello.jpa.Album</class>
         <class>hello.jpa.Movie</class>
+        <class>hello.jpa.BaseEntity</class>
+        <class>hello.jpa.Member</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="test"/>
