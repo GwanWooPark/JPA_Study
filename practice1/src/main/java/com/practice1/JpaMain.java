@@ -16,7 +16,6 @@ public class JpaMain {
         try {
 
 
-
         } catch (Exception e) {
             tx.rollback();
         } finally {

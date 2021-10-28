@@ -5,6 +5,8 @@
         <class>com.practice1.domain.Order</class>
         <class>com.practice1.domain.Item</class>
         <class>com.practice1.domain.OrderItem</class>
+        <class>com.practice1.domain.Category</class>
+        <class>com.practice1.domain.Delivery</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="test"/>
