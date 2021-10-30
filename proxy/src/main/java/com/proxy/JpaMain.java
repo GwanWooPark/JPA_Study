@@ -15,20 +15,31 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
 
-            Member member = new Member();
-            member.setName("hello");
-            member.setTeam(team);
-            em.persist(member);
-            
-            // 영속성 컨텍스트 깔끔하게
-            em.flush();
-            em.clear();
+            Child child1 = new Child();
+            Child child2 = new Child();
 
-            Member m = em.find(Member.class, member.getId());
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+            em.persist(parent);
+
+
+//            Team team = new Team();
+//            team.setName("teamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setName("hello");
+//            member.setTeam(team);
+//            em.persist(member);
+//
+//            // 영속성 컨텍스트 깔끔하게
+//            em.flush();
+//            em.clear();
+//
+//            Member m = em.find(Member.class, member.getId());
 
 //            지연로딩
 //            System.out.println("m.getTeam().getClass() = " + m.getTeam().getClass());
