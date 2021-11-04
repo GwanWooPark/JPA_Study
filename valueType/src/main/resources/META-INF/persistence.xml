@@ -2,6 +2,7 @@
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
     <persistence-unit name="hello">
         <class>com.valuetype.Member</class>
+        <class>com.valuetype.AddressEntity</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="test"/>
@@ -9,7 +10,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/study_db"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
 
-            <property name="hibernate.show_sql" value="true"/>
+            <!--<property name="hibernate.show_sql" value="true"/>-->
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.jdbc.batch_size" value="10"/>
