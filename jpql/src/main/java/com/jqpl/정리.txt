@@ -21,3 +21,50 @@
 • 네이티브 SQL
   • JPA가 제공하는 SQL을 직접 사용하는 기능
   • JPQL로 해결할 수 없는 특정 DB에 의존적인 기능
+
+• JPQL 문법
+  • 엔티티와 속성은 대소문자 구분 O
+  • JPQL 키워드는 대소문자 구분 X (select, from, where)
+  • 엔티티 이름 사용, 테이블 이름이 아님
+  • 별칭은 필수(m)
+
+
+• TypeQuery: 반환 타입이 명확할 때 사용
+    TypedQuery<Member> query = em.createQuery("select m from Member m where m.username =:username", Member.class);
+    query.setParameter("username", "user");
+    TypedQuery<String> query2 = em.createQuery("select m.username from Member m", String.class);
+
+• Query: 반환 타입이 명확하지 않을 때 사용
+    Query emQuery = em.createQuery("select m.username, m.age from Member m");
+
+
+프로젝션
+  • SELECT절에 조회할 대상을 지정하는 것
+
+  • 프로젝션 대상: 엔티티, 임베디드 타입, 스칼라 타입(숫자, 문자등 기본 데이터 타입)
+     엔티티 타입 프로젝션
+       List<Team> result = em.createQuery("select t from Member m join m.team t", Team.class)
+                             .getResultList();
+     임베디드 타입 프로젝션
+       List<Address> result = em.createQuery("select o.address from Order o", Address.class)
+                                .getResultList();
+
+• 프로젝션(여러 값 조회)
+   • Query 타입으로 조회
+
+   • Object[] 타입으로 조회
+      List<Object[]> resultList = em.createQuery("select distinct m.username, m.age from Member m")
+                          .getResultList();
+      Object[] result = resultList.get(0);
+      System.out.println("username = " + result[0]);
+      System.out.println("age = " + result[1]);
+
+   • new 명령어로 조회
+   List<MemberDTO> resultList = em.createQuery("select new com.jqpl.domain.MemberDTO(m.username, m.age) from Member m", MemberDTO.class)
+                       .getResultList();
+      -> 단순 값을 DTO로 바로 조회
+         패키지 명을 포함한 전체 클래스 명 입력
+         순서와 타입이 일치하는 생성자 필요
+
+• 페이징 API
+   • JPA는 페이징을 다음 두 API로 추상화
