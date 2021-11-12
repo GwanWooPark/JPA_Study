@@ -1,9 +1,6 @@
 package com.jjpql.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Member {
@@ -13,7 +10,8 @@ public class Member {
 
     private String username;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
     private Team team;
 
     public Long getId() {
